@@ -136,13 +136,3 @@ File: `sites/RoyalRoadAdapter.kt`. Port of `adapter_royalroadcom.py`, **redesign
   cookies via `AppCookieJar` (OkHttp UA = WebView default UA, which the cookies are tied to).
   If Anubis changes markers, update `detectChallenge()` in `Fetch.kt`.
 - Login isn't implemented (not needed for free chapters).
-
-## Ideas / TODO
-
-- **AO3: check when it's back up.** It was down as of 2026-11-10 (expected for about a week). AO3 serves
-  its own EPUB download (`/downloads/<id>/<title>.epub`), so an adapter may only need to fetch that
-  rather than scrape chapters. Check FFF's `adapter_archiveofourownorg.py` / `base_otw_adapter.py` for
-  login and adult-content handling.
-
-- AO3: it serves its own EPUB download; an adapter could fetch that directly.
-- Update mode (only fetch new chapters) would need reading back the existing EPUB.
