@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">PocketFare</string>
+    <string name="share_label">Save as EPUB</string>
+    <string name="share_options_label">EPUB with options…</string>
+</resources>

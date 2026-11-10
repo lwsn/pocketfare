@@ -1,0 +1,22 @@
+PocketFare
+Copyright 2026 lwsn
+
+This product includes software derived from FanFicFare
+(https://github.com/JimmXinu/FanFicFare), Copyright FanFicFare team,
+licensed under the Apache License, Version 2.0.
+
+The site adapters in core/src/main/kotlin/pocketfare/core/sites/ are Kotlin ports
+of FanFicFare's Python adapters:
+  - XenForo2Adapter.kt   <- fanficfare/adapters/base_xenforo2forum_adapter.py
+                            and the per-site adapter_forums*.py /
+                            adapter_alternatehistorycom.py subclasses
+  - RoyalRoadAdapter.kt  <- fanficfare/adapters/adapter_royalroadcom.py
+The ports have been modified (rewritten in Kotlin, simplified, and adapted to
+this application's architecture).
+
+Third-party libraries (all Apache License 2.0 unless noted):
+  - jsoup (MIT License)
+  - OkHttp
+  - AndroidX / Jetpack Compose
+  - Kotlin standard library and kotlinx.coroutines
+  - JSON-java (org.json, Public Domain), JVM command-line build only
