@@ -8,3 +8,4 @@ local.properties
 /out/
 fixtures/
 out/
+.fff-upstream/

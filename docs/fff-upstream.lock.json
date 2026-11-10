@@ -1,0 +1,20 @@
+{
+  "repo": "https://github.com/JimmXinu/FanFicFare",
+  "branch": "main",
+  "commit": "8a7509cb83ebfed2f828389be8e7436de3c33bd4",
+  "synced": "2026-11-10",
+  "files": {
+    "fanficfare/adapters/base_xenforo2forum_adapter.py": "core/src/main/kotlin/pocketfare/core/sites/XenForo2Adapter.kt",
+    "fanficfare/adapters/adapter_forumsspacebattlescom.py": "core/src/main/kotlin/pocketfare/core/sites/XenForo2Adapter.kt (XenForoSites entry)",
+    "fanficfare/adapters/adapter_forumssufficientvelocitycom.py": "core/src/main/kotlin/pocketfare/core/sites/XenForo2Adapter.kt (XenForoSites entry)",
+    "fanficfare/adapters/adapter_forumquestionablequestingcom.py": "core/src/main/kotlin/pocketfare/core/sites/XenForo2Adapter.kt (XenForoSites entry)",
+    "fanficfare/adapters/adapter_alternatehistorycom.py": "core/src/main/kotlin/pocketfare/core/sites/XenForo2Adapter.kt (XenForoSites entry)",
+    "fanficfare/adapters/adapter_royalroadcom.py": "core/src/main/kotlin/pocketfare/core/sites/RoyalRoadAdapter.kt",
+    "fanficfare/defaults.ini": "Option defaults (core/.../Story.kt Options) and per-site values (XenForoSites)"
+  },
+  "ini_sections": [
+    "defaults", "epub", "base_xenforoforum", "base_xenforo2forum",
+    "forums.spacebattles.com", "forums.sufficientvelocity.com", "forum.questionablequesting.com",
+    "www.alternatehistory.com", "www.royalroad.com", "royalroadl.com"
+  ]
+}

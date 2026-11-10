@@ -5,17 +5,25 @@ adapter came from, what it depends on, and how to re-sync it with FanFicFare (FF
 site changes actively.
 
 Upstream: https://github.com/JimmXinu/FanFicFare (core is Apache-2.0; see `NOTICE`).
-Ported from upstream `main` as of **2026-11-10**. When re-syncing, diff upstream from that date:
+The upstream commit our ports match, and which upstream file maps to which Kotlin file, are pinned in
+[`fff-upstream.lock.json`](fff-upstream.lock.json). Don't record the commit anywhere else.
+
+### Syncing with upstream
 
 ```sh
-git clone https://github.com/JimmXinu/FanFicFare && cd FanFicFare
-git log --since=2026-11-10 -p -- \
-  fanficfare/adapters/base_xenforo2forum_adapter.py \
-  fanficfare/adapters/adapter_forums*.py fanficfare/adapters/adapter_forumquestionablequestingcom.py \
-  fanficfare/adapters/adapter_alternatehistorycom.py \
-  fanficfare/adapters/adapter_royalroadcom.py \
-  fanficfare/defaults.ini
+python3 tools/fff-sync.py              # what changed upstream since the pin (exit 10 = relevant changes)
+python3 tools/fff-sync.py --summary    # commit list + files only
+python3 tools/fff-sync.py --update-pin # after porting (or after confirming nothing applies)
 ```
+
+The script keeps a blobless clone of FanFicFare in `.fff-upstream/` (gitignored). It shows only the
+files we ported from, and only the `defaults.ini` sections our adapters use (`ini_sections` in the
+lock file). Add new upstream files to the lock file's `files` map when porting a new adapter.
+
+The whole procedure (triage, port, test, rebuild, pin, commit on a branch) is automated by the
+`adapter-sync` agent (`.claude/agents/adapter-sync.md`, runs on Sonnet): ask Claude Code to "sync
+the adapters". It escalates structural changes instead of guessing and never fetches live story
+sites on its own.
 
 Also check the FFF wiki "ProblematicSites" page for bot-check changes:
 https://github.com/JimmXinu/FanFicFare/wiki/ProblematicSites
@@ -130,6 +138,11 @@ File: `sites/RoyalRoadAdapter.kt`. Port of `adapter_royalroadcom.py`, **redesign
 - Login isn't implemented (not needed for free chapters).
 
 ## Ideas / TODO
+
+- **AO3: check when it's back up.** It was down as of 2026-11-10 (expected for about a week). AO3 serves
+  its own EPUB download (`/downloads/<id>/<title>.epub`), so an adapter may only need to fetch that
+  rather than scrape chapters. Check FFF's `adapter_archiveofourownorg.py` / `base_otw_adapter.py` for
+  login and adult-content handling.
 
 - AO3: it serves its own EPUB download; an adapter could fetch that directly.
 - Update mode (only fetch new chapters) would need reading back the existing EPUB.

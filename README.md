@@ -46,7 +46,9 @@ Command-line tool for trying adapters without a phone:
 `fixtures/` and `out/` are gitignored, since they contain third-party story text. Keep live testing
 light: record once, then iterate with `--replay`.
 
-Site adapters break when sites change their HTML. [`docs/ADAPTERS.md`](docs/ADAPTERS.md) records
+Site adapters break when sites change their HTML. `python3 tools/fff-sync.py` shows what upstream
+FanFicFare changed since the last sync (pinned in `docs/fff-upstream.lock.json`).
+[`docs/ADAPTERS.md`](docs/ADAPTERS.md) records
 where each adapter was ported from, how to diff upstream FanFicFare for fixes since the port, the
 selectors and quirks for each site, and when each site was last confirmed working.
 

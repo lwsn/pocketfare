@@ -8,8 +8,12 @@ Kotlin ports of FanFicFare (Apache-2.0, see NOTICE).
 - `app/`: Android (Compose, WorkManager). Share target → `DownloadWorker`; `WebActivity` handles login
   and bot checks; `SessionStore` keeps login cookies AES-GCM-encrypted with an Android Keystore key.
 
-**Before touching an adapter, read `docs/ADAPTERS.md`.** It has the upstream sync procedure,
-selectors, and site quirks. Update it (including the "ported as of" date) whenever an adapter changes.
+To sync adapters with upstream FanFicFare, use the `adapter-sync` agent (Sonnet). It runs
+`tools/fff-sync.py`, ports, tests, rebuilds and pins.
+
+**Before touching an adapter, read `docs/ADAPTERS.md`.** It has the sync procedure, selectors, and
+site quirks. Update it whenever an adapter changes. The upstream pin lives only in
+`docs/fff-upstream.lock.json` (set it with `tools/fff-sync.py --update-pin`).
 
 Build: Gradle 9.9 wrapper (runs on the default JDK), AGP 9.5 with built-in Kotlin (no
 `kotlin-android` plugin; don't add it back), Kotlin 2.4, compileSdk 37 / targetSdk 36. No JDK
